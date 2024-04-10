@@ -21,29 +21,49 @@ void Todo::append(Task *other)
 
 void Todo::del(char *title)
 {
-    Task **tempTasks = new Task *[size - 1];
-    for (int i = 0; i < size; i++)
+    try
     {
-        if (strcmp(title, tasks[i]->getTitle()) == 0)
+        int size_ = size;
+        Task **tempTasks = new Task *[size - 1];
+        for (int i = 0; i < size_; i++)
         {
-            i--;
-            size--;
-            continue;
+            if (strcmp(title, tasks[i]->getTitle()) == 0)
+            {
+                size--;
+                continue;
+            }
+            tempTasks[i + size - size_] = tasks[i];
         }
-        tempTasks[i] = tasks[i];
+
+        if (size == size_)
+            throw("no task with this title");
+        if (tasks != nullptr)
+            delete[] tasks;
+        tasks = tempTasks;
     }
-    if (tasks != nullptr)
-        delete[] tasks;
-    tasks = tempTasks;
+    catch (const char *err)
+    {
+        cout << err << '\n';
+    }
 }
 
 void Todo::print()
 {
+    cout << '\n'
+         << "TO DO:" << '\n';
     for (int i = 0; i < size; i++)
     {
         cout << "title: " << tasks[i]->getTitle() << '\n'
              << "description: " << tasks[i]->getDescription() << '\n'
              << "status: " << tasks[i]->getStatus() << '\n'
              << '\n';
+    }
+}
+
+Todo::~Todo()
+{
+    if (tasks != nullptr)
+    {
+        delete[] tasks;
     }
 }

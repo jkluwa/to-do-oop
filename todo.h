@@ -7,6 +7,7 @@ class Todo
 {
 public:
     Todo();
+    ~Todo();
     void append(Task *other);
     void del(char *title);
     void print();

@@ -20,6 +20,7 @@ class Task
 {
 public:
     Task(const char *title, const char *description, statusEn status);
+    ~Task();
     const char *getTitle() { return title; }
     const char *getDescription() { return description; }
     const char *getStatus();

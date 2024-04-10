@@ -23,3 +23,11 @@ void Form::print()
         cin.getline(args[i], 250);
     }
 }
+
+Form::~Form()
+{
+    if (args != nullptr)
+        delete[] args;
+    if (argsNames != nullptr)
+        delete[] argsNames;
+}

@@ -19,3 +19,11 @@ const char *Task::getStatus()
         return "";
     }
 }
+
+Task::~Task()
+{
+    if (title != nullptr)
+        delete[] title;
+    if (description != nullptr)
+        delete[] description;
+}

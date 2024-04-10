@@ -14,6 +14,7 @@ class Menu
 {
 public:
     Menu();
+    ~Menu();
     void mainMenu();
 
 private:

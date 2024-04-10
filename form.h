@@ -9,6 +9,7 @@ class Form : public Option
 {
 public:
     Form(Todo *todo, const char *name, std::initializer_list<const char *> args);
+    ~Form();
     void print();
     char **getArgs() { return args; };
 

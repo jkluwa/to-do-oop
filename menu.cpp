@@ -10,10 +10,11 @@ Menu::Menu() : todo{new Todo}, OPTS_SIZE{3}
 
 void Menu::mainMenu()
 {
-    char *n;
+    char n[10];
     while (1)
     {
         cout << '\n'
+             << '\n'
              << "THIS IS MENU" << '\n';
         for (int i = 0; i < OPTS_SIZE; i++)
         {
@@ -22,4 +23,10 @@ void Menu::mainMenu()
         cin.getline(n, 10);
         options[atoi(n)]->action();
     }
+}
+
+Menu::~Menu()
+{
+    if (options != nullptr)
+        delete[] options;
 }

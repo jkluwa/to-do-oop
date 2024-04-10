@@ -11,7 +11,7 @@ void AddForm::action()
     {
         char *title = (char *)malloc(sizeof(char) * 25);
         strcpy(title, Form::args[0]);
-        if (!title)
+        if (title == nullptr || !title[0])
             throw("Title is empty");
         char *description = (char *)malloc(sizeof(char) * 250);
         strcpy(description, Form::args[1]);
